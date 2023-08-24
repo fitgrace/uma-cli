@@ -1,0 +1,20 @@
+{
+  "name": "@uma/cli",
+  "version": "0.0.1",
+  "description": "Cli tools for front-end kit",
+  "type": "module",
+  "main": "lib/index.js",
+  "typings": "types/index.d.ts",
+  "bin": {
+    "uma": "./bin/index.js"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "types"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "commander": "^11.0.0"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@uma/cli-monorepo",
+  "private": true,
+  "scripts": {
+    "lint:fix": "eslint --cache --quiet --ext .js,.jsx,.ts,.tsx --fix scripts maidan/**/src packages/**/src",
+    "postinstall": "simple-git-hooks",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --concurrent false",
+    "commit-msg": "pnpm exec tsx scripts/verify-commit.ts $1"
+  },
+  "lint-staged": {
+    "{maidan,packages,scripts}/**/.{ts?(x),js?(x)}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.9",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.46.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-hooks": "^1.0.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "lint-staged": "^13.2.3",
+    "picocolors": "^1.0.0",
+    "prettier": "^3.0.2",
+    "simple-git-hooks": "^2.9.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
+  }
+}
